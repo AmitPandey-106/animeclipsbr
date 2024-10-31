@@ -1,10 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const PortNo = 8000; // Ensure 'mongoUrl' is correctly exported from './key'
 const mongoose = require('mongoose');
 const database = process.env.MONGO_URL
 const cors = require('cors')
-const {mongoUrl} = require('./keys')
 
 app.use(cors({
   origin: "https://animeclipsfr.vercel.app",
@@ -23,8 +23,8 @@ const Postv = require('./controller/postvideo')
 const Userpost = require('./controller/userpost')
 const Adminsignin = require('./auth/adminsignin')
 const searchvideo = require('./controller/search')
+console.log(database)
 
-// console.log(mongoUrl)
 mongoose.connect(database)
 .then(() => {
   console.log('Successfully connected to MongoDB');
