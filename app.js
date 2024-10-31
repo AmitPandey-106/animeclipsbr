@@ -6,7 +6,10 @@ const database = process.env.MONGO_URL
 const cors = require('cors')
 const {mongoUrl} = require('./keys')
 
-app.use(cors())
+app.use(cors({
+  origin: "https://animeclipsfr.vercel.app",
+  methods: ['GET', 'POST', 'DELETE']
+}))
 app.use(express.json());
 
 require('./model/auth')
@@ -22,7 +25,7 @@ const Adminsignin = require('./auth/adminsignin')
 const searchvideo = require('./controller/search')
 
 // console.log(mongoUrl)
-mongoose.connect(mongoUrl)
+mongoose.connect(database)
 .then(() => {
   console.log('Successfully connected to MongoDB');
 })
