@@ -7,8 +7,9 @@ const database = process.env.MONGO_URL
 const cors = require('cors')
 
 app.use(cors({
-  origin: "https://animeclipsfr.vercel.app",
-  methods: ['GET', 'POST', 'DELETE']
+  origin: https://animeclipsfr.vercel.app', // replace with your Vercel app URL
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
 }))
 app.use(express.json());
 
