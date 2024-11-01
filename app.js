@@ -5,12 +5,14 @@ const PortNo = 8000; // Ensure 'mongoUrl' is correctly exported from './key'
 const mongoose = require('mongoose');
 const database = process.env.MONGO_URL
 const cors = require('cors')
+const corsOptions = {
+    origin: 'https://animeclipsfr.vercel.app', // Replace with your Vercel app URL
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+    optionsSuccessStatus: 204
+};
 
-app.use(cors({
-  origin: https://animeclipsfr.vercel.app', // replace with your Vercel app URL
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true
-}))
+app.use(cors(corsOptions));
 app.use(express.json());
 
 require('./model/auth')
